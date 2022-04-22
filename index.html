@@ -9,15 +9,39 @@
 </head>
 <body>
     <header>
-        <h1>Campo Minato</h1>
-    </header>
+        <div class="container center">
+            <!-- logo e titolo -->
+            <div class="title center">
+                <a class="logo" href="">
+                    <img src="img/logo-boolean.png" alt="Logo Boolean"/>
+                </a>
+                <span>Campo Minato</span>
+            </div>
+
+            <!-- barra di selezione difficoltà e bottone inizio gioco-->
+            <div class="play-bar">
+
+                <label for="difficulty">Difficoltà:
+                    <select name="difficulty" id="difficulty">
+                        <option value="1" selected>Easy</option>
+                        <option value="2">Hard</option>
+                        <option value="3">Crazy</option>
+                    </select>
+                </label>
+                
+                <button id="play" type="button">Play</button>
+            </div>
+        </div>
+      </header>
 
     <main>
 
     </main>
 
     <footer>
-
+        <div class="container">
+            Made with &hearts; by <a href="">Boolean</a>
+        </div>
     </footer>
 
 
