@@ -58,18 +58,28 @@ img {
     text-align: right;
 }
 
+select {
+    min-width: 8rem;
+}
+
 button {
     min-width: 4rem;
 }
 
 /* MAIN */
 main {
-    /* debug */
-    height: 600px;
+    position: relative;
+    top: 6rem;
+    left: 0;
+    height: 100%;
+}
+
+h2 {
+    text-align: center;
+    line-height: 100%;
 }
 
 /* FOOTER */
-
 footer {
     position: fixed;
     bottom: 0;
