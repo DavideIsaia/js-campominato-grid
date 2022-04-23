@@ -7,32 +7,94 @@
 // con difficoltà 2 => tra 1 e 81
 // con difficoltà 3 => tra 1 e 49
 
+// RICORDARE LE DOMANDE DA FARE A FINE PAGINA!!!
+
 // creo la griglia cliccando sul bottone play
 document.getElementById("play").addEventListener("click", function (event) {
     play();
 });
 
-//FUNZIONE
+//FUNZIONE PRINCIPALE
 /**
  * Descrizione: la funzione crea una griglia 10x10, 9x9 o 7x7 in base alla selezione della difficoltà
- * @returns {any}
  */
 function play() {
-    // 1) ripuliamo il contenuto del main
+
+    // 1) ripuliamo il contenuto del main a ogni clic del bottone play
     document.querySelector("main").innerHTML = "";
 
     // 2) definisco la grandezza della griglia in base al livello di difficoltà selezionato
     let gridSize;
+    let gridSideLength;
     let difficulty = (document.getElementById("difficulty").value);
 
     if (difficulty == "1") {          
         gridSize = 100;
+        gridSideLength = 10;
     } else if (difficulty == "2") {           
         gridSize = 81;
+        gridSideLength = 9;
     } else if (difficulty == "3") {
         gridSize = 49;
+        gridSideLength = 7;
     }
 
-    // 3) creo gli elementi della griglia
+    console.log("difficoltà", difficulty, "grandezza griglia", gridSize, "lato griglia", gridSideLength);
+    
+    // 2.1) inserisco un'altra funzione all'interno della principale in modo che sia nello stesso blocco e possa leggere la variabile gridSize
 
+    /**
+     * Descrizione: la funzione appende i vari item della griglia e li colora se cliccati
+     */
+     function createGrid() {
+        const grid = document.createElement("div");
+        grid.className = "grid";
+        // console.log(grid);
+        for (let i = 1; i <= gridSize; i++) {
+            const item = createGridItem(i);
+            grid.appendChild(item);
+            // console.log(item);
+            // aggiungo la classe per colorare la casella al clic tramite il "this"
+            item.addEventListener("click", function () {
+                this.classList.add("selected");
+                console.log(item);
+            });
+        }
+
+        document.getElementsByTagName("main")[0].appendChild(grid);
+    }
+
+    // 2.2) inserisco un'altra funzione all'interno della principale in modo che sia nello stesso blocco e possa leggere la variabile gridSideLength
+
+     /**
+     * Descrizione: la funzione crea gli item e li dispone in base al livello di difficoltà selezionato
+     * @param {number} number :riceve in ingresso i numeri generati dal ciclo della funzione 2.1 e gli costruisce gli item attorno 
+     * @returns {any} item :vari blocchi con le classi css
+     */
+    function createGridItem(number) {
+        // creo il div
+        const item = document.createElement("div");
+        // aggiungo la classe square
+        item.classList.add("square");
+        // calcolo l'altezza dei quadrati in base al lato della griglia
+        const sideLength = `calc(100% / ${gridSideLength})`;
+        // console.log(item);
+        // console.log(sideLength);
+
+        // aggiungo style inline in html e non nel CSS
+        item.style.width = sideLength;
+        item.style.height = sideLength;
+        // aggiungo sequenzialmente i vari item mettendo il numero dentro uno span
+        item.innerHTML += `<span>${number}</span>`;
+        // console.log(item);
+        
+        return item;
+    }
+
+    // 3) creo gli elementi della griglia!
+    createGrid();
 }
+
+// RIGA 64: metodo trovato su stackoverflow, cosa vuol dire quello [0]?
+// RIGA 80: calcolo effettuato tante volte, si può migliorare?
+// RIGA 84: metodo trovato su stackoverflow, è buona pratica style inline in html?
