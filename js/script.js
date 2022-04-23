@@ -18,6 +18,21 @@ document.getElementById("play").addEventListener("click", function (event) {
  * @returns {any}
  */
 function play() {
-    // ripuliamo il contenuto del main
+    // 1) ripuliamo il contenuto del main
     document.querySelector("main").innerHTML = "";
+
+    // 2) definisco la grandezza della griglia in base al livello di difficoltà selezionato
+    let gridSize;
+    let difficulty = (document.getElementById("difficulty").value);
+
+    if (difficulty == "1") {          
+        gridSize = 100;
+    } else if (difficulty == "2") {           
+        gridSize = 81;
+    } else if (difficulty == "3") {
+        gridSize = 49;
+    }
+
+    // 3) creo gli elementi della griglia
+
 }
