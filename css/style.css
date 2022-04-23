@@ -23,6 +23,7 @@ body {
 .center {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 /* HEADER */
@@ -70,13 +71,10 @@ button {
 
 /* MAIN */
 main {
-    display: flex;
     position: relative;
     top: 6rem;
     left: 0;
     height: calc(100% - 6rem);
-    justify-content: center; 
-    align-items: center;   
 }
 
 .grid {
@@ -85,6 +83,22 @@ main {
     width: 40rem;
     height: 40rem;
 }
+
+/* .easy {
+    width: 10%;
+    height: 10%;
+}
+
+.hard {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.crazy {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+} */
+/* come fare ad usare queste invece dello style inline? */
   
 .square {
     display: flex;
